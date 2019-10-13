@@ -1,5 +1,9 @@
 ubuntu整套使用流程：
 
+ubuntu必装应用：
+    vim、ranger、neofetch、cmake、bulid-essential、python、python-dev、python3、python3-dev
+
+
 一、卸载ubuntu——删除引导程序并格式化磁盘
 1、cmd打开命令提示符
 2、输入diskpart回车
@@ -46,6 +50,47 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
          Plug 'xxx'
          call plug#end()
     4.3、输入PlugInstall安装插件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

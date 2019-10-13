@@ -1,9 +1,11 @@
-let mapleader=" "
-syntax on
-set number
-set norelativenumber
-set cursorline
-set wrap
+---vim配置文件---
+
+let mapleader=" "            
+syntax on                  ---高亮
+set number                 ---显示行号
+set relativenumber         ---显示当前行号
+set cursorline             ---使代码底下显示斜线
+set wrap 
 set showcmd
 set wildmenu
 
@@ -14,53 +16,51 @@ set ignorecase
 set smartcase
 
 
-set nocompatible
+set nocompatible             ---使vi/vim兼容
 filetype on
 filetype indent on
 filetype plugin on
 filetype plugin indent on
-set mouse=a
+
+set mouse=a                           ---能使用鼠标
 set encoding=utf-8
 let &t_ut=''
-set expandtab
+
+set expandtab                      ---设置tab键
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set list
+
+set list                               ---使空格位置显示符号               
 set listchars=tab:▸\ ,trail:▫
-set scrolloff=5
+
+set scrolloff=5                        ---使代码上下两端始终留5行
 set tw=0
 set indentexpr=
 set backspace=indent,eol,start
 set foldmethod=indent
 set foldlevel=99
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"         ---使光标在正常与插入模式下有不同显示
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
 set laststatus=2
-set autochdir
+set autochdir                                                   ---使每次关闭终端后再次打开光标停留在原来位置
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 noremap = nzz
 noremap - Nzz
 noremap <LEADER><CR> :nohlsearch<CR>
 
-noremap n h
-noremap u k
-noremap e j
-noremap i l
-noremap U 5k
-noremap E 5j
-noremap N 7h
-noremap I 7l
+noremap K 5k                           ---按键替换
+noremap J 5j
+noremap H 7h
+noremap L 7l
 " N key: go to the start of the line
 noremap <C-n> 0
 " I key: go to the end of the line
 noremap <C-i> $
-
-noremap k i
-noremap K I
-noremap l u
 
 map s <nop>
 map S :w<CR>
@@ -68,27 +68,27 @@ map Q :q<CR>
 map R :source $MYVIMRC<CR>
 map ; :
 
-map si :set splitright<CR>:vsplit<CR>
-map sn :set nosplitright<CR>:vsplit<CR>
-map su :set nosplitbelow<CR>:split<CR>
-map se :set splitbelow<CR>:split<CR>
+map sr :set splitright<CR>:vsplit<CR>              ---左右分屏并使光标在右
+map sl :set nosplitright<CR>:vsplit<CR>            ---光标在左
+map su :set nosplitbelow<CR>:split<CR>             ---上下分屏使光标在上
+map sd :set splitbelow<CR>:split<CR>               ---光标在下
 
-map <LEADER>i <C-w>l
-map <LEADER>u <C-w>k
-map <LEADER>n <C-w>h
-map <LEADER>e <C-w>j
+map <LEADER>r <C-w>l                      ---光标右移   
+map <LEADER>u <C-w>k                      ---光标上移
+map <LEADER>l <C-w>h                      ---光标左移
+map <LEADER>d <C-w>j                      ---光标下移
 
 map <up> :res +5<CR>
 map <down> :res -5<CR>
 map <left> :vertical resize-5<CR>
 map <right> :vertical resize+5<CR>
 
-map tu :tabe<CR>
-map tn :-tabnext<CR>
-map ti :+tabnext<CR>
+map tu :tabe<CR>            ---创建新标签
+map tl :-tabnext<CR>        ---标签左移
+map tr :+tabnext<CR>        ---标签右移
 
-map sv <C-w>t<C-w>H
-map sh <C-w>t<C-w>K
+map sv <C-w>t<C-w>H         ---垂直分屏
+map sh <C-w>t<C-w>K         ---水平分屏
 
 call plug#begin('~/.vim/plugged')
 
