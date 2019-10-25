@@ -11,5 +11,6 @@
 2: 更新软件源
   sudo pacman-mirrors -c China
   sudo nano /etc/pacman.conf
-(在文件mulitupe:)
+(在文件mulitupe:[archlinuxcn]
+                         )
 
