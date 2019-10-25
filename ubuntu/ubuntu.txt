@@ -1,0 +1,96 @@
+ubuntu整套使用流程：
+
+ubuntu必装应用：
+    vim、ranger、neofetch、cmake、bulid-essential、python、python-dev、python3、python3-dev
+
+
+一、卸载ubuntu——删除引导程序并格式化磁盘
+1、cmd打开命令提示符
+2、输入diskpart回车
+    list disk             列出系统中的磁盘
+    select disk 0         选择EFI引导分区所在的磁盘
+    list partition        列出所选磁盘拥有的分区
+    select partition 1    选择类型为系统的EFI引导分区
+    assign letter=p       为所选分区分配盘符
+3、安装Total Commander
+4、打开软件选择p盘符(管理员权限)，找到ubuntu单击右键选择，按shift+delete彻底删除
+5、打开磁盘管理格式化磁盘
+
+二、ubuntu安装分区(120G)
+1、swap交换分区：8G   (主分区)
+2、/boot引导分区：1G  (逻辑分区)
+3、/根目录：40G       (主分区)
+4、/home：剩下全部    (逻辑分区)
+
+三、更新软件源
+1、打开软件更新选择适合的软件源
+2、sudo apt-get update
+   sudo apt-get upgrade
+3、安装必备软件(vim git curl)
+    sudo apt-get install xxx
+
+四、终端配置(zsh、oh-my-zsh)
+1、安装zsh：sudo apt-get install zsh
+2、打开oh-my-zsh或者github搜索选择下载
+    curl：sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    wget：sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+3、输入vim ~/.zshrc，选择更改主题(ys)
+4、输入chsh -s $(which zsh)，是终端更改为zsh
+5、重新启动电脑
+
+五、配置vim
+1、在/home目录下创建文件夹：mkdir .vim
+2、进入文件夹：cd .vim
+3、vim编辑文件：vim vimrc
+4、插件安装：
+    4.1、安装vim-plug：github搜索vim-plug，使用如下安装命令：
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    4.2、call plug#begin('~/.vim/plugged')
+         Plug 'xxx'
+         call plug#end()
+    4.3、输入PlugInstall安装插件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
