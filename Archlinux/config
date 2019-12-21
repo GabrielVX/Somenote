@@ -1,0 +1,18 @@
+#Refresh repos
+1. vim /etc/pacman.conf
+   Tips: [archlinuxcn]
+         SigLevel = Never
+         Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+2. sduo pacman -Syyu
+
+#Applications
+1.vim rofi ranger feh compton zathura latex code electron-ssr chromium netease-cloud-music 
+
+
+#polybar
+1.config file: /usr/share/doc/polybar
+
+#alacritty
+1. config file: /usr/share/doc/alacritty/example/alacritty.yml
+
+
