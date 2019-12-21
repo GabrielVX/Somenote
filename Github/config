@@ -1,0 +1,20 @@
+#SSHKeys
+1. sudo pacman -S openssh   #install ssh
+2. ssh-keygen -t rsa -C "email"
+3. cd .ssh
+4. cat id_rsa.pub
+
+
+#git-config
+1. git config --list
+2. git config user.name
+3. git config user.email
+4. git config --global user.name "name"
+5. git config --global user.email "eamil@qq.com"
+
+#solution of git-clone rate
+1. git config --global http.https://github.com.proxy 'socks5://127.0.0.1:1080'
+2. git config --global http.proxy 'socks5://127.0.0.1:1080'
+3. git config --global https.proxy 'socks5://127.0.0.1:1080'
+
+
