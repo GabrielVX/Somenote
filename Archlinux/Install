@@ -1,0 +1,92 @@
+#
+
+#Connection of Network
+1. wifi-menu
+   Tips: rfkill unblock wifi
+
+#Detection Network
+2. ping www.baidu.com
+
+#Reflesh local time
+3. timedatectl set-ntp true
+
+#Replace local source
+4. vim /etc/pacman.d/mirrorlist
+   Tips: /China > N > 2dd > gg > p
+
+#Check startuo mode
+5. ls /sys/firmware/efi/efivars
+   Tips: If there is output, it's UEFI. Otherwise, it's BIOS.
+
+#Disk partition
+6. fdisk -l (fdisk /dev/sda)
+   Tips: d is dlete; p is partition; w is written&quit; q is quit.
+7. cfdisk (/dev/sda)
+
+#Formate partition
+8. mkfs.fat -F32 /dev/sda4
+9. mkfs.ext4 /dev/sda9
+10. mkfs.ext4 /dev/sda10
+11. mkswap /dev/sda8
+12. swapon /dev/sda8
+
+#Mount partition
+13. mount /dev/sda9 /mnt     (mount /root)
+14. mkdir /mnt/home
+15. mount /dev/sda10 /mnt/home
+16. mkdir /mnt/boot
+17. mkdir /mnt/boot/efi
+18. mount /dev/sda4 /mnt/boot/EFI
+19. lsblk      >>(check partition)
+
+#Install system
+20. pacman -Syy
+21. pacstrap /mnt base linux linux-firmware
+22. pacstrap /mnt base-devel dhcp netctl
+
+#Config of system
+  #Generate partition table
+23. genfstab -U /mnt >> /mnt/etc/fstab
+24. cat /mnt/etc/fstab
+
+#change root > /mnt
+25. arch-chroot /mnt
+
+#Set time-zone
+26. ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+27. hwclock --systohc
+
+#Localization settin
+28. pacman -S vim
+29. vim /etc/locale.gen   (Remove comments:en_US.UTF-8 / zh_CN.UTF-8; zh_CN.GBK; zh_CN.GB2312)
+30. locale-gen
+31. vim /etc/locale.conf
+    Tips:Input >> LANG=en_US.UTF-8
+
+#Set hostname
+32. vim /etc/hostname    (Arch)
+33. vim /etc/hosts
+    Tips: 127.0.0.1      localhost
+          ::1            localhost
+          127.0.0.1      Arch.localdomain  Arch
+
+#Change passwd of root
+34. passwd root
+    Tips: Input passwd 2 times
+
+#Installation boot
+35. pacman -S grub efibootmgr os-prober ntfs-3g
+36. pacman -S iw wpa_supplicant dialog networkmanager netctl net-tools
+
+37. grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
+38. grub-mkconfig -o /boot/grub/grub.cfg
+
+#Finish
+39. exit 
+40. umount -R /mnt
+41. reboot
+
+
+
+
+
